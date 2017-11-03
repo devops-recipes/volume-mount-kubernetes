@@ -2,11 +2,11 @@ resources:
 
   - name: vmk_app_img
     type: image
-    # replace drship_gcloud with your google cloud integration name
-    integration: drship_gcloud
+    # replace drship_dockerhub with your docker registry integration name
+    integration: drship_dockerhub
     pointer:
-      # replace devops-samples with your google cloud project name
-      sourceName: "gcr.io/devops-samples/basic_node"
+      # replace devopsrecipes/basic_node with your organization/repository
+      sourceName: "devopsrecipes/vmk_node_sample_app"
     seed:
       versionName: "latest"
 
@@ -46,7 +46,7 @@ resources:
     #replace with your Kubernetes integration name
     integration: drship_kube
     pointer:
-      # replace devops-test-cluster with your google container engine cluster name
+      # replace devops-test-cluster with your cluster name
       sourceName: "devops-test-cluster"
-      # replace us-central1-a with your availability zone
+      # replace us-central1-a with your availability zone if using google container engine
       region: us-central1-a
