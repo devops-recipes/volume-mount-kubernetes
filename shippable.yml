@@ -50,3 +50,25 @@ resources:
       sourceName: "devops-test-cluster"
       # replace us-central1-a with your availability zone if using google container engine
       region: us-central1-a
+
+
+jobs:
+
+  - name: vmk-app-def
+    type: manifest
+    steps:
+      - IN: vmk_app_img
+      - TASK: managed
+
+  - name: vmk-provision-lb
+    type: provision
+    steps:
+      - IN: vmk_lb
+
+  - name: vmk-app-deploy
+    type: deploy
+    method: replace
+    steps:
+      - IN: vmk_opts
+      - IN: vmk-app-def
+      - IN: vmk_kube_cluster
